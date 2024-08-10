@@ -62,9 +62,12 @@ void	get_lines(char *map_file, t_game *game)
 	i = -1;
 	while (++i < (game->map.rows))
 	{
-		temp = game->map.map[i];
-		game->map.map[i] = ft_strtrim(game->map.map[i], "\n");
-		free(temp);
+		if (game->map.map[i][0] != '\n' && game->map.map[i][0] != '\0')
+		{
+			temp = game->map.map[i];
+			game->map.map[i] = ft_strtrim(game->map.map[i], "\n");
+			free(temp);
+		}
 	}
 	game->map.columns = ft_strlen(game->map.map[0]);
 }
