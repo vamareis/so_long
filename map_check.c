@@ -105,8 +105,10 @@ void	map_error_analysis(t_game *game)
 		abort_game(game, "There is no player start position in the map");
 	if (game->map.player > 1)
 		abort_game(game, "There is more than one player in the map");
-	if (game->map.exit != 1)
+	if (game->map.exit < 1)
 		abort_game(game, "There is no exit in the map");
+	if (game->map.exit > 1)
+		abort_game(game, "There is more than one exit in the map");
 	if (game->map.collectibles == 0)
 		abort_game(game, "There are no collectibles in the map");
 	find_path(game);
